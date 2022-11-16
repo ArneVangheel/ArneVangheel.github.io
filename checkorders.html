@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="sidenav">
+        <a href="index.html">Create Order</a>
+        <a href="checkorder.html">View Order</a>
+        <a href="orders.html">All Orders</a>
+    </div>
+    <div class="main">
+        <div x-data="{
+        responsedata: null,
+        firstname: null,
+        lastname: null,
+        async callmethod1() {
+            this.responsedata = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/order', 
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                    first_name: this.firstname,
+                    last_name: this.lastname,
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })).json();
+            console.log(this.responsedata);
+        },
+    }">
+            <input type="text" x-model="firstname">
+            <input type="text" x-model="lastname">
+            <button x-on:click="callmethod1">Call method</button>
+
+            <p>Data inserted with id: <strong x-text="responsedata.OrderId"></strong></p>
+            <p>Title that was inserted: <strong x-text="responsedata.first_name"></strong></p>
+
+        </div>
+    </div>
+</body>
+
+</html>
