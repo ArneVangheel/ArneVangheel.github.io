@@ -16,9 +16,9 @@
     <div class="main">
         <div x-data="{
         orders: [],
-        filter: "",
+        filter: ?,
         async getData() {
-            this.orders = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders/?' + this.filter)).json();
+            this.orders = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders/' + this.filter)).json();
         }
     }">
 
