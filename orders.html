@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="sidenav">
+        <a href="index.html">Create Order</a>
+        <a href="checkorder.html">View Order</a>
+        <a href="orders.html">All Orders</a>
+    </div>
+    <div class="main">
+        <div x-data="{orders:[]}" x-init="orders = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders')).json()">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order Nummer</th>
+                        <th>Status</th>
+                        <th>Order Date</th>
+                        <th>Customer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template x-for="order in orders">
+                        <tr>
+                            <td x-text="order.OrderId"></td>
+                            <td>Done</td>
+                            <td x-text="order.orderedAt"></td>
+                            <td x-text="order.last_name + ' ' + order.first_name"></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
