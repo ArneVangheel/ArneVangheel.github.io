@@ -13,12 +13,13 @@
         <a href="orders.html">All Orders</a>
     </div>
     <div class="main">
+        <h4></h4>
         <div x-data="{
         responsedata: null,
         firstname: null,
         lastname: null,
         async callmethod1() {
-            this.responsedata = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/order', 
+            this.responsedata = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/order',
             {
                 method: 'POST',
                 body: JSON.stringify({
@@ -29,17 +30,13 @@
                     'Content-type': 'application/json; charset=UTF-8',
                 },
             })).json();
-
-            console.log(this.responsedata);
         },
     }">
-            <input type="text" x-model="firstname">
-            <input type="text" x-model="lastname">
-            <button x-on:click="callmethod1">Call method</button>
-
-            <p>Data inserted with id: <strong x-text="responsedata.OrderId"></strong></p>
-            <p>Title that was inserted: <strong x-text="responsedata.first_name"></strong></p>
-
+            <label>First Name:</label><input type="text" x-model="firstname"><br>
+            <label>Last Name:</label><input type="text" x-model="lastname"><br>
+            <button x-on:click="callmethod1">Create Order</button>
+            <br><br>
+            <p>Order Nummer: <strong x-text="responsedata.OrderId"></strong></p>
         </div>
     </div>
 </body>
