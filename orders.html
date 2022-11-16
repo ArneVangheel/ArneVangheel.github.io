@@ -16,10 +16,13 @@
     <div class="main">
         <div x-data="{
         orders: [],
+        filter: null,
         async getData() {
-            this.orders = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders?')).json();
+            this.orders = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders/?' + this.filter)).json();
         }
     }">
+
+            <label>Filter:</label><input type="text" x-model="filter" placeholder="filter"><br>
         <button x-on:click="getData" x-init="getData">Refresh Orders</button>
             <table>
                 <thead>
