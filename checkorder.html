@@ -13,33 +13,22 @@
         <a href="orders.html">All Orders</a>
     </div>
     <div class="main">
-        <div x-data="{
+       <h4>Get information about you're order using an OrderId</h4>
+       <div x-data="{
         responsedata: null,
-        firstname: null,
-        lastname: null,
-        async callmethod1() {
-            this.responsedata = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/order', 
-            {
-                method: 'POST',
-                body: JSON.stringify({
-                    first_name: this.firstname,
-                    last_name: this.lastname,
-                }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-            })).json();
-            console.log(this.responsedata);
-        },
+        orderid: null,
+        async getData() {
+            this.responsedata = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/orders/' + this.orderid)).json();
+        }
     }">
-            <input type="text" x-model="firstname">
-            <input type="text" x-model="lastname">
-            <button x-on:click="callmethod1">Call method</button>
-
-            <p>Data inserted with id: <strong x-text="responsedata.OrderId"></strong></p>
-            <p>Title that was inserted: <strong x-text="responsedata.first_name"></strong></p>
-
-        </div>
+         <input type="text" x-model="orderid" placeholder="Order Nummer">
+         <button x-on:click="getData">Get Information</button>
+           <br><br>
+           First Name: <strong x-text="responsedata.first_name"></strong><br>
+           Last Name: <strong x-text="responsedata.last_name"></strong><br>
+           Order Nummer: <strong x-text="responsedata.OrderId"></strong><br>
+           Order Date: <strong x-text="responsedata.orderedAt"></strong>
+    </div>
     </div>
 </body>
 
