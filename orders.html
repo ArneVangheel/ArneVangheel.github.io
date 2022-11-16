@@ -14,7 +14,13 @@
         <a href="orders.html">All Orders</a>
     </div>
     <div class="main">
-        <div x-data="{orders:[]}" x-init="orders = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders')).json()">
+        <div x-data="{
+        orders: [],
+        async getData() {
+            this.orders = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders?')).json();
+        }
+    }">
+        <button x-on:click="getData" x-init="getData">Refresh Orders</button>
             <table>
                 <thead>
                     <tr>
@@ -35,7 +41,8 @@
                     </template>
                 </tbody>
             </table>
-        </div>
+
+    </div>
     </div>
 </body>
 
