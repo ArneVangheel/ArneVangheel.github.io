@@ -22,9 +22,7 @@
             if (this.user) {
                 this.filter = 'user=' + this.user
             }
-            console.log(this.filter)
-            console.log('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders?' + this.filter)
-            this.orders = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders?' + this.filter)).json();
+            this.orders = await (await fetch('https://api-service-arnevangheel.cloud.okteto.net//all_orders?' + this.filter)).json();
         }
     }">
             <input type="text" x-model="user" placeholder="user">
