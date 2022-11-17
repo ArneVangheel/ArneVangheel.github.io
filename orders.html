@@ -16,10 +16,18 @@
     <div class="main">
         <div x-data="{
         orders: [],
+        user: null,
         async getData() {
-            this.orders = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders')).json();
+            filter: null
+            if (this.user) {
+                this.filter = 'user=' + this.user
+            }
+            console.log(this.filter)
+            console.log('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders?' + this.filter)
+            this.orders = await (await fetch('https://randomizer-service-arnevangheel.cloud.okteto.net/all_orders?' + this.filter)).json();
         }
     }">
+            <input type="text" x-model="user" placeholder="user">
         <button x-on:click="getData" x-init="getData">Refresh Orders</button>
             <table>
                 <thead>
