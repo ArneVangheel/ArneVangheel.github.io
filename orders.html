@@ -22,7 +22,7 @@
             if (this.user) {
                 this.filter = 'user=' + this.user
             }
-            this.orders = await (await fetch('https://api-service-arnevangheel.cloud.okteto.net//all_orders?' + this.filter)).json();
+            this.orders = await (await fetch('https://api-service-arnevangheel.cloud.okteto.net/all_orders?' + this.filter)).json();
         }
     }">
             <input type="text" x-model="user" placeholder="user">
