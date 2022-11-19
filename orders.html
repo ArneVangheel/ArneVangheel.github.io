@@ -41,7 +41,7 @@
                     <template x-for="order in orders">
                         <tr>
                             <td x-text="order.OrderId"></td>
-                            <td>Done</td>
+                            <td x-text="order.status"></td>
                             <td x-text="order.orderedAt"></td>
                             <td x-text="order.last_name + ' ' + order.first_name"></td>
                             <td x-text="order.product"></td>
