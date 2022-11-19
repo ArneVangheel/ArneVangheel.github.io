@@ -18,7 +18,7 @@
         responsedata: null,
         orderid: null,
         async getData() {
-            this.responsedata = await (await fetch('https://api-service-arnevangheel.cloud.okteto.net//orders/' + this.orderid)).json();
+            this.responsedata = await (await fetch('https://api-service-arnevangheel.cloud.okteto.net/orders/' + this.orderid)).json();
         }
     }">
          <input type="text" x-model="orderid" placeholder="Order Nummer">
