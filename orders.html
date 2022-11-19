@@ -34,6 +34,7 @@
                         <th>Status</th>
                         <th>Order Date</th>
                         <th>Customer</th>
+                        <th>Product</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,7 @@
                             <td>Done</td>
                             <td x-text="order.orderedAt"></td>
                             <td x-text="order.last_name + ' ' + order.first_name"></td>
+                            <td x-text="order.product"></td>
                         </tr>
                     </template>
                 </tbody>
