@@ -29,6 +29,13 @@ margin-left : 200px;
 font-size : 28px;
 padding : 0 10px;
 }
+button {
+  background-color: #3730a3; 
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
 @media screen and (max-height: 450px) {
 .sidenav {
 padding-top : 15px;
@@ -38,12 +45,5 @@ font-size : 18px;
 }
 thead {
 background-color: #f9fafb;
-}
-button {
-  background-color: #3730a3; 
-  border: none;
-  color: white;
-  padding: 15px;
-  text-align: center;
 }
 }
